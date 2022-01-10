@@ -1,6 +1,6 @@
 {
-  "name": "mangle",
-  "version": "1.0.0",
+  "name": "mangle-doc",
+  "version": "1.0.1",
   "description": "Reactive documents in markdown",
   "main": "bin/index.js",
   "type": "module",
