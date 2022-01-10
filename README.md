@@ -1,15 +1,15 @@
 # Mangle
 
-Another attempt at writing [tangle documents](http://worrydream.com/Tangle/) in your favorite markdown editor.
+Another attempt at writing [Tangle.js](http://worrydream.com/Tangle/) documents in markdown.
 
-The main objective was to keep the "explanation" part as readable as possible.
+The main objective here was to keep the "explanation" part as readable as possible, without loosing the power of javascript.
 
 ## Example
 
-A "mangle" document is split into three sections:
-1. the explanation (markdown)
-2. variable options (yaml)
-3. the update function (coffeescript)
+A "Mangle" document is split into three sections, separated by `---`:
+1. the content (markdown)
+2. the config (yaml)
+3. the code (coffeescript)
 
 ```mangle
 # Cookies
