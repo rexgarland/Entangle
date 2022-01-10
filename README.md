@@ -13,7 +13,7 @@ npm install -g mangle-doc
 ## Usage
 
 ```shell
-mangle <example-file.mangle>
+mangle -f <example-file.mangle>
 ```
 
 A "Mangle" document is split into three sections, separated by `---`:
@@ -46,7 +46,7 @@ update = {cookies} ->
 ```
 
 ```shell
-mangle example/cookies.mangle
+mangle -f example/cookies.mangle
 ```
 
 ![example/cookies.html](images/cookies.png)
