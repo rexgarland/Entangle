@@ -1,0 +1,27 @@
+{
+  "name": "mangle",
+  "version": "1.0.0",
+  "description": "Reactive documents in markdown",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rexgarland/Mangle.git"
+  },
+  "keywords": [
+    "tangle",
+    "reactive",
+    "document",
+    "explorable",
+    "explanation",
+    "markdown"
+  ],
+  "author": "Rex Garland <rex@rexgarland.dev> (https://rexgarland.dev/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rexgarland/Mangle/issues"
+  },
+  "homepage": "https://github.com/rexgarland/Mangle#readme"
+}
