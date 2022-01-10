@@ -2,7 +2,12 @@
   "name": "mangle",
   "version": "1.0.0",
   "description": "Reactive documents in markdown",
-  "main": "index.js",
+  "main": "bin/index.js",
+  "type": "module",
+  "preferGlobal": true,
+  "bin": {
+    "mangle": "bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,5 +28,9 @@
   "bugs": {
     "url": "https://github.com/rexgarland/Mangle/issues"
   },
-  "homepage": "https://github.com/rexgarland/Mangle#readme"
+  "homepage": "https://github.com/rexgarland/Mangle#readme",
+  "dependencies": {
+    "commander": "^8.3.0",
+    "mangle-standalone": "^1.0.3"
+  }
 }
