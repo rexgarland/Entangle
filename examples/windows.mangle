@@ -1,0 +1,41 @@
+# Are double-pane windows worth it?
+
+Replacing single-pane windows with double-pane will cost more up front, but you save money on heating in the long run. I started to wonder how much, so I built this little Mangle doc.
+
+Here's an approximation based on the cost of heating alone:
+
+* I use heating for `${months} months` a year.
+* My heating bill is about `${bill}` during the coldest month.
+
+Double-pane windows will save me around `${savings}` per year.
+
+---
+
+months:
+  class: TKAdjustableNumber
+  min: 1
+  max: 12
+  initial: 4
+
+bill:
+  class: TKAdjustableNumber
+  min: 10
+  max: 500
+  initial: 100
+  step: 10
+  format: dollars
+
+savings:
+  format: dollars
+
+---
+
+uSingle = 1.25 # source: https://aerosealcorp.com/understanding-u-values/
+uDouble = 0.3 # source: https://www.vitroglazings.com/media/xd4jd0vm/vitro-td-121.pdf
+uRatio = uDouble/uSingle
+
+update = ({months, bill}) ->
+	avgBill = bill*0.7
+	oldYearly = months*avgBill
+	newYearly = oldYearly*uRatio
+	savings: oldYearly-newYearly

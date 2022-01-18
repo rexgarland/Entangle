@@ -1,0 +1,44 @@
+
+A typical index fund grows at 7% per year. If you...
+
+* start with `${initialAmount}`
+* add `${monthlyExpense}` per month
+* over `${years} years`
+
+...you would save `${total}`
+
+
+---
+
+initialAmount:
+  class: TKAdjustableNumber
+  min: 0
+  max: 100000
+  initial: 10000
+  step: 500
+  format: dollars
+
+monthlyExpense:
+  class: TKAdjustableNumber
+  min: 0
+  max: 10000
+  initial: 1000
+  step: 100
+  format: dollars
+
+years:
+  class: TKAdjustableNumber
+  min: 1
+  max: 20
+  initial: 5
+
+total:
+  format: dollars
+
+---
+
+apr = 7
+update = ({years, monthlyExpense, initialAmount}) -> 
+	mpr = Math.pow(1+apr/100,1/12) - 1
+	arr = (Array years*12) .fill monthlyExpense
+	total: arr.reduce ((a,v)->a*(mpr+1)+v), initialAmount

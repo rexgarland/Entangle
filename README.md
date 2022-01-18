@@ -1,4 +1,4 @@
-# Mangle
+# Entangle
 
 Another attempt at writing [Tangle.js](http://worrydream.com/Tangle/) documents in markdown.
 
@@ -7,46 +7,48 @@ The main objective here was to keep the "explanation" part as readable as possib
 ## Install
 
 ```shell
-npm install -g mangle-doc
+npm install -g entangle
 ```
 
 ## Usage
 
 ```shell
-mangle -f <example-file.mangle>
+entangle -f <example-file.entangle>
 ```
 
-A "Mangle" document is split into three sections, separated by `---`:
+A "Entangle" document is split into three sections, separated by `---`:
 1. the content (markdown)
 2. the config (yaml)
 3. the code (coffeescript)
 
 ## Example
 
-example/cookies.mangle:
+example/cookies.entangle:
 
-```mangle
+```entangle
 # Cookies
 
 If you eat `${cookies} cookies`, you will consume `${calories} calories`, or `${percent}%` of your recommended daily intake.
 
 ---
+
 cookies:
   class: TKAdjustableNumber
   min: 0
   max: 10
   initial: 3
 percent:
-  format: %.0f
+  format: "%.0f"
 
 ---
-update = {cookies} ->
+
+update = ({cookies}) ->
   calories: cookies*50,
   percent: cookies*2.38
 ```
 
 ```shell
-mangle -f example/cookies.mangle
+entangle -f example/cookies.entangle
 ```
 
 ![example/cookies.html](images/cookies.png)
