@@ -7,19 +7,25 @@ The main objective here was to keep the "explanation" part as readable as possib
 ## Install
 
 ```shell
-npm install -g entangle
+npm install -g entangle-doc
 ```
 
 ## Usage
 
 ```shell
-entangle -f <example-file.entangle>
+entangle <source.entangle>
 ```
+
+If you have trouble opening the output html in Mac Safari, try Firefox.
+
+## Explanation
 
 A "Entangle" document is split into three sections, separated by `---`:
 1. the content (markdown)
 2. the config (yaml)
 3. the code (coffeescript)
+
+Entangle will bundle the content, script, and some styles (a la the original Tangle.js) into a standalone html file which you can open.
 
 ## Example
 
@@ -48,7 +54,7 @@ update = ({cookies}) ->
 ```
 
 ```shell
-entangle -f example/cookies.entangle
+entangle example/cookies.entangle
 ```
 
 ![example/cookies.html](images/cookies.png)

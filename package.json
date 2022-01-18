@@ -1,12 +1,12 @@
 {
-  "name": "Entangle",
-  "version": "1.0.4",
+  "name": "entangle-doc",
+  "version": "1.0.5",
   "description": "Reactive documents in markdown",
   "main": "bin/index.js",
   "type": "module",
   "preferGlobal": true,
   "bin": {
-    "mangle": "bin/index.js"
+    "entangle": "bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -31,6 +31,6 @@
   "homepage": "https://github.com/rexgarland/Entangle#readme",
   "dependencies": {
     "commander": "^8.3.0",
-    "mangle-standalone": "^1.0.3"
+    "entangle-standalone": "^1.0.3"
   }
 }

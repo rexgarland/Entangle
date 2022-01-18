@@ -3,23 +3,23 @@
 import {program} from 'commander'
 import path from 'path'
 
-import mangle from 'mangle-standalone'
+import entangle from 'entangle-standalone'
 
 program
-	.requiredOption('-f, --file <file>', 'mangle file')
-	.option('-o, --output <output>', 'html file to output')
-program.parse(process.argv)
-const options = program.opts()
-console.log(options)
+.arguments('<source>')
+.option('-o, --output <output>', 'html file to output')
+.action(function(source, options) {
 
-const filename = options.file
-const {name, dir} = path.parse(filename)
+	// get out file
+	const {name, dir} = path.parse(source)
+	var outFile
+	if (options.output) {
+		outFile = options.output
+	} else {
+		outFile = path.join(dir, name + '.html')
+	}
 
-var outFile
-if (options.output) {
-	outFile = options.output
-} else {
-	outFile = path.join(dir, name + '.html')
-}
-
-mangle(filename, outFile)
+	// run entangle
+	entangle(source, outFile)
+})
+.parse(process.argv);
