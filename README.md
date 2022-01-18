@@ -53,9 +53,13 @@ update = ({cookies}) ->
   percent: cookies*2.38
 ```
 
+Running...
+
 ```shell
 entangle example/cookies.entangle
 ```
+
+... will output ...
 
 ![example/cookies.html](images/cookies.png)
 
