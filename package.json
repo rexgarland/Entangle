@@ -1,6 +1,6 @@
 {
-  "name": "mangle-doc",
-  "version": "1.0.3",
+  "name": "Entangle",
+  "version": "1.0.4",
   "description": "Reactive documents in markdown",
   "main": "bin/index.js",
   "type": "module",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rexgarland/Mangle.git"
+    "url": "git+https://github.com/rexgarland/Entangle.git"
   },
   "keywords": [
     "tangle",
@@ -26,9 +26,9 @@
   "author": "Rex Garland <rex@rexgarland.dev> (https://rexgarland.dev/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rexgarland/Mangle/issues"
+    "url": "https://github.com/rexgarland/Entangle/issues"
   },
-  "homepage": "https://github.com/rexgarland/Mangle#readme",
+  "homepage": "https://github.com/rexgarland/Entangle#readme",
   "dependencies": {
     "commander": "^8.3.0",
     "mangle-standalone": "^1.0.3"
