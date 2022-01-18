@@ -25,7 +25,7 @@ A "Entangle" document is split into three sections, separated by `---`:
 2. the config (yaml)
 3. the code (coffeescript)
 
-Entangle will bundle the content, script, and some styles (a la the original Tangle.js) into a standalone html file which you can open.
+The code is a single function, named `update`, that produces the dependent variables from the independent variables (i.e. the user controls). Entangle will bundle the content, script, and some styles (a la the original Tangle.js) into a standalone html file which you can open.
 
 ## Example
 
