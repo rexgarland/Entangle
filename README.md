@@ -63,6 +63,16 @@ entangle example/cookies.entangle
 
 ![example/cookies.html](images/cookies.png)
 
+## API
+
+I also included some hooks for parsing entangle code.
+
+```javascript
+import {parse} from "entangle-doc"
+
+const { content, code } = parse(source)
+```
+
 ## Similar projects
 
 - https://github.com/jqhoogland/remark-tangle

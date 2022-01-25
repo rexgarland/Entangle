@@ -1,15 +1,15 @@
 {
   "name": "entangle-doc",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Reactive documents in markdown",
-  "main": "bin/index.js",
+  "main": "src/index.js",
   "type": "module",
   "preferGlobal": true,
   "bin": {
     "entangle": "bin/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,17 @@
   "homepage": "https://github.com/rexgarland/Entangle#readme",
   "dependencies": {
     "commander": "^8.3.0",
-    "entangle-standalone": "^1.0.3"
+    "lodash": "4.17.21",
+    "browserify": "^17.0.0",
+    "coffeescript": "^2.6.1",
+    "handlebars": "^4.7.7",
+    "js-yaml": "^4.1.0",
+    "mootools": "^1.5.2",
+    "rehype-stringify": "^9.0.2",
+    "remark": "^14.0.2",
+    "remark-rehype": "^10.1.0",
+    "sprintf-js": "^1.1.2",
+    "tempy": "^2.0.0",
+    "yargs": "^17.3.1"
   }
 }

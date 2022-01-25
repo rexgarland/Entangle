@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Tangle document</title>
+		<link rel="stylesheet" type="text/css" href="https://unpkg.com/tangle-doc@^1/styles/TangleKit.css">
+		<script type="text/javascript" src="https://unpkg.com/tangle-doc@^1/umd/Tangle.min.js"></script>
+	</head>
+
+	<body style="background:#EAC07E">
+
+		<!-- noscript stuff -->
+
+		<noscript>
+			<div class="example">
+				<div class="exampleTop"></div>
+				<div class="exampleCenter">
+					<p>Please open this document in your computer's browser.</p>
+				</div>
+				<div class="exampleBottom"></div>
+			</div>
+		</noscript>
+
+
+
+
+		<!-- EDIT ME -->
+
+		<div id="content" style="display:none;">
+			<div id="tangle" class="Tangle">
+				<div class="exampleCenter">
+					{{{html}}}
+				</div>
+			</div>
+		</div>
+
+		<!-- /EDIT ME -->
+
+
+
+
+	</body>
+
+	<script type="text/javascript">{{{ script }}}</script>
+
+	<!-- noscript stuff -->
+	<script type="text/javascript">document.getElementById("content").style.display='block';</script>
+
+</html>
