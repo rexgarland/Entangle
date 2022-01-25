@@ -9,6 +9,9 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import Handlebars from "handlebars";
 
+import fs from 'fs'
+import path from 'path'
+
 import { trimChars, merge } from "./utils.js"
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -100,7 +103,15 @@ function renderCode(code) {
 				initialObj[k] = d.initial;
 			});
 		const initial = "const initial=" + JSON.stringify(initialObj);
-		return { initial, updater: code.replace(/update/g,'updater') };
+		const context = { initial, updater: code.replace(/update/g,'updater') };
+		// render js
+		const jsSource = fs.readFileSync(
+			path.join(__dirname, "../templates/example.template.js"),
+			"utf8"
+		);
+		const jsTemplate = Handlebars.compile(jsSource);
+		const script = jsTemplate(context);
+		return script
 	};
 }
 

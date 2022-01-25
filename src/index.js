@@ -24,7 +24,7 @@ export function entangle(entangleFile, outFile, standalone) {
 			"utf8"
 		);
 		const jsTemplate = Handlebars.compile(jsSource);
-		const js = jsTemplate(javascript);
+		const js = jsTemplate({script: javascript});
 		fs.writeFileSync(path.join(__dirname, "tangle/example.js"), js, "utf8");
 
 		// browserify
@@ -50,21 +50,15 @@ export function entangle(entangleFile, outFile, standalone) {
 			const output = template(data);
 			fs.writeFileSync(outFile, output, 'utf8');
 		})
+		
 	} else {
-		// render js
-		const jsSource = fs.readFileSync(
-			path.join(__dirname, "../templates/example.template.js"),
-			"utf8"
-		);
-		const jsTemplate = Handlebars.compile(jsSource);
-		const script = jsTemplate(javascript);
 
 		// get template
 		const htmlSource = fs.readFileSync(path.join(__dirname, '../templates/example.template.html'), 'utf8');
 		const htmlTemplate = Handlebars.compile(htmlSource);
 
 		// save
-		const output = htmlTemplate({html, script});
+		const output = htmlTemplate({html, script: javascript});
 		fs.writeFileSync(outFile, output, 'utf8');
 	}
 }

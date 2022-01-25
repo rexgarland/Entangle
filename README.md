@@ -70,7 +70,7 @@ I also included some hooks for parsing entangle code.
 ```javascript
 import {parse} from "entangle-doc"
 
-const { content, code } = parse(source)
+const { html, javascript } = parse(source)
 ```
 
 ## Similar projects
