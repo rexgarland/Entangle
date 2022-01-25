@@ -12,7 +12,7 @@ import Handlebars from "handlebars";
 import fs from 'fs'
 import path from 'path'
 
-import { trimChars, merge } from "./utils.js"
+import { trimChars, merge, hash } from "./utils.js"
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -54,7 +54,7 @@ const TO_EXCLUDE = ["literal", "location","initial"];
 
 function renderContent(markdown) {
 	// create html from markdown
-	return (variables) => {
+	return (variables, id) => {
 		// create spans
 		const spans = {};
 		Object.keys(variables).forEach((varName) => {
@@ -87,14 +87,14 @@ function renderContent(markdown) {
 		const template = Handlebars.compile(markup)
 		var markup = template(spans)
 
-		return markup
+		return `<div id="${id}" class="Tangle">`+markup+'</div>'
 	};
 }
 
 function renderCode(code) {
 	// return the initial object (based on the data) and the updater function
 	// returned as javascript code strings
-	return (data) => {
+	return (data, id) => {
 		const initialObj = {};
 		Object.keys(data)
 			.filter((k) => "initial" in data[k])
@@ -103,7 +103,7 @@ function renderCode(code) {
 				initialObj[k] = d.initial;
 			});
 		const initial = "const initial=" + JSON.stringify(initialObj);
-		const context = { initial, updater: code.replace(/update/g,'updater') };
+		const context = { initial, updater: code.replace(/update/g,'updater'), id };
 		// render js
 		const jsSource = fs.readFileSync(
 			path.join(__dirname, "../templates/example.template.js"),
@@ -120,7 +120,8 @@ export function parse(entangle) {
 	const variables = parseVariables(content);
 	const variableConfig = parseConfig(config);
 	const variableData = merge(variables, variableConfig);
-	const html = renderContent(content)(variableData);
-	const javascript = renderCode(code)(variableData);
-	return { html, javascript };
+	const id = hash(entangle,4);
+	const html = renderContent(content)(variableData,id);
+	const javascript = renderCode(code)(variableData,id);
+	return { html, javascript, id };
 }

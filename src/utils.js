@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import {createHash} from 'crypto'
 
 export function trimChars(chars) {
 	return (s) => {
@@ -26,4 +27,10 @@ export function merge(obj1, obj2) {
 		}
 	})
 	return obj
+}
+
+export function hash(string, length=8) {
+    const hash = createHash('sha256');
+    hash.update(string);
+    return hash.digest('hex').slice(0,length);
 }

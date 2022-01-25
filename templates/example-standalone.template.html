@@ -5,100 +5,89 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Tangle document</title>
-		<style type="text/css">
-		/*
-		 *  TangleKit.css
-		 *  Tangle 0.1.0
-		 *
-		 *  Created by Bret Victor on 6/10/11.
-		 *  (c) 2011 Bret Victor.  MIT open-source license.
-		 *
-		 */
+		<style type="text/css">/*
+ *  TangleKit.css
+ *  Tangle 0.1.0
+ *
+ *  Created by Bret Victor on 6/10/11.
+ *  (c) 2011 Bret Victor.  MIT open-source license.
+ *
+ */
 
 
-		/* cursor */
+/* 
+Paper shadow adopted from Martin Wolf's codepen:
+https://codepen.io/martinwolf/pen/hxdmv
+*/
 
-		.TKCursorDragHorizontal {
-			cursor: pointer;
-			cursor: move;
-			cursor: col-resize;
-		}
+.Tangle {
+  position: relative;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+
+  padding: 1rem;
+}
+
+.Tangle::before,
+.Tangle::after {
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  width: 50%;
+  height: 10px;
+  box-shadow: 0 5px 14px rgba(0,0,0,.7);
+  z-index: -1;
+}
+
+.Tangle::before {
+  left: 5px;
+  transform: translateX(-50%) skew(-4deg) rotate(-4deg) translateX(50%);
+}
+
+.Tangle::after {
+  right: 5px;
+  transform: translateX(50%) skew(4deg) rotate(4deg) translateX(-50%);
+}
+
+/* cursor */
+
+.TKCursorDragHorizontal {
+	cursor: pointer;
+	cursor: move;
+	cursor: col-resize;
+}
 
 
-		/* TKToggle */
+/* TKToggle */
 
-		.TKToggle {
-			color: #46f;
-			border-bottom: 1px dashed #46f;
-			cursor: pointer;
-		}
+.TKToggle {
+	color: #46f;
+	border-bottom: 1px dashed #46f;
+	cursor: pointer;
+}
 
 
-		/* TKAdjustableNumber */
+/* TKAdjustableNumber */
 
-		.TKAdjustableNumber, .TKLogAdjustableNumber {
-			position:relative;
-			color: #46f;
-			border-bottom: 1px dashed #46f;
-		}
+.TKAdjustableNumber, .TKLogAdjustableNumber {
+	position:relative;
+	color: #46f;
+	border-bottom: 1px dashed #46f;
+}
 
-		.TKAdjustableNumberHover {
-		}
+.TKAdjustableNumberHover {
+}
 
-		.TKAdjustableNumberDown {
-			color: #00c;
-			border-bottom: 1px dashed #00c;
-		}
+.TKAdjustableNumberDown {
+	color: #00c;
+	border-bottom: 1px dashed #00c;
+}
 
-		.TKAdjustableNumberHelp {
-			position:absolute;
-			color: #00f;
-			font: 9px "Helvetica-Neue", "Arial", sans-serif;
-		}
-
-		/* example */
-
-		.example {
-		  font: 16px "Times New Roman", "Times", serif;
-		  width:735px;
-		  margin-left:-10px;
-		  color:#444;
-		}
-
-		.example p {
-		  /*margin:0;*/
-		}
-
-		.example code {
-		  font-size:12px;
-		  color:#888;
-		}
-
-		.example code b {
-		  font-weight:bold;
-		  color:#222;
-		}
-
-		.exampleTop {
-		  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAt8AAAAJCAYAAADq8kDfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAUxJREFUeNrs3D1ugzAYgGHb/CQZu3Xowt6L9XK9S6/AjMQAQkKUunb0uTEOpp2b95EsgyWIxPTKgmh1o9U9/ct5bg0AAAD4b+wf1uzRtTqJ5/Q4HblrCHAAAAA8Qnzbg+N0LY1xW+6Ed4hpE+ZlWd7d/Lz5ZWsJbgAAADwcrfVmd9sYY9u2fWua5kNi+yuadRzgZRLeZmcU7oavbrzwqAEAAIB70zQ9uamS4F5VZge83AnvQuZSjit2uQEAAIC8vu9rN9US3loiXEUxrkN8K7V91aSQ9UrmM/ENAAAA5HVdd/Hd7MandLWfbRTg1+PwXreKwjvEdy03uKzranikAAAAwL5hGE7Szr6hKxmFSv68JLfzXcgF1wBn5xsAAADIG8fRx/dJTsM73/F3lH5NmSi+VRTgZTR45xsAAAA4MM9z2O0O303G4f3jW4ABANw5U2uviVRSAAAAAElFTkSuQmCC);
-		  width:735px;
-		  height:9px;
-		}
-
-		.exampleCenter {
-		  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAt8AAAACCAYAAACANbAcAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGZJREFUeNrs0DsKgDAQRdGJiEoaK3dqlz6LcSMuSKLgh/iKFIJY2d4Dl5mBVHFmVquqzEa1qlO+zD6lNHnvBwMAAADwEmMcQwiz1k0talerOsp+qbPiqwAAAIB/cs7ucbqvd7cAAwDr9RMFfUmU3AAAAABJRU5ErkJggg==);
-		  width:655px;
-		  padding-top:10px;
-		  padding-left:40px;
-		  padding-right:40px;
-		  padding-bottom:8px;
-		}
-
-		.exampleBottom {
-		  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAt8AAAAZCAYAAADpJEJEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAB4tJREFUeNrsnd1u4zYQRjlKti0SoL3q+/Uhepf7vExfpS/TAik2WVtTuxERrkKK3/BPSvodQNCuLVEULdtnJiNanHO3l2Va1j9clh8vy0+X5W5Z//z09PTH3d3dr44QQgghhBDyjsfHx98fHh7+vPzz78vy9bL8s6yfL8vLZTldlnniUBFCCCGEEFKHqgqyHeWbEEIIIYSQSkREKd+EEEIIIYQMgJlvQgghhBBCBsHMNyGEEEIIIYNg5psQQgghhJBBMPNNCCGEEELIIJj5JoQQQgghZBDMfBNCCCGEEDIINPN9i2x0f3//22X1i3v9xcv7ZX1dviyL/5VMqe135bba8VhqbEeN21jOSYH9FTyGguMxNxhPNTynhrZLxtp6jejA67jXNi3GqNW5jXqv7/m6jRyjFFL4XKtjjNhWOh6ndX9l5+OMft2k4fVkaXdrW+k8bhO4f65fYjgXKXxf1Iz11uMjPxN6HSv1mXx1oeuvVH5blq/L8rSs/6qRb41ImQbLHFnEKEnWL1nLF3DJF5pFsNUg0Ar0HWlPjfuqUcYV3L9k/FsGKNbgo5X0tBDT1gFKC4Fr3edaKR6xf8v+tgzwRiOd9imR5hHiKgfpb4vnpeE+LftcIkgtRFoKxwgdRyk8V9n4PyrbAvRdjHIvwDmIYUws4yWdr3cpvA7R6zvmv5rx5qx8a2I5LwcI1+dgIL2Q14iMRVBLnkMzwMgXOyq5Vql2kRcRFeetdSyg0lXAtD7mDIylVo5jSXCCBmY9M/WtHm8pkS3fdz3GqUZyewUtLfrb6ti9xFw67ds7E9pDIltKdi+RlUFj0Vrue47TZBSsErksaScm0rHtp419NPLYlkgLKNgxgUcDFyRYyPWzJIBywFi6yudavO+8/56Cf6/9OOXS38m3bkhUeJDrcuNe0+y+Y976b5ZFAKlEBdgB7eQEVV1Z+YUaxF0z+0tCfNF2kCz3DAYFCoj6DAi9guNlzbajYo1k5EeVcxw109qrrGOklOrgdlvKewt53lu+LRmt2uPWSpoMbrdVdm6vQKRFkCSdX9OU6FklC8nC5gQwtpaE3KbWE9gmIrkTMA65fuXORzeeRwVYDGO91SdL/y3vOwGutXWwFHrx1YdflvUpWM6BhMfcRG8jD64t3jf0smx3EzR6cm/13mHNd0lmFBXSrW0s7amzZYpzAYA6m0zn5DgU4S25z8m/S0RfWtC2NUjQzDVQ8peB0qCttViPLDHoHUgcvZ699+vSq7971JC3FuM9apF7S3Kv/vYS9ZHjLINfl1Z/xbDIN1qikcv6lkptblsB5RVpe9rotzWIQPphFWgBx8UZxtAZ20NEPHTbOXDj6/K8yPfz4slezFPZ8P9IlZ14aw8Lym8CGfzi3jLhqZstEbHNlR/MHWQaldWUjCLbOGObOfHfkt85sx0yPpbABT2WqwyQUBHfIxO6hyD36Ic06oMe4JxGBjqjRPoIme+W7RxFCFvs3yqzr4b2ZMD4y4GuhZq/dKCZcks9di7DXHOcXPY7tu9kOEZJYCAF21vatJx7qaxPwOuIlvq4lYCHiWnvyc/L2rvzOSbeXr7XN1KG6XRZGtLlJPxzt4uA+3ITL99oqUJKCHOZ5xkQwBkQW0TqS+TcIuC5QCQns8hfA5yhb87ZS4VKSnzQunVk3xEZRB3c1pH7fxS5RSRmZP96SfJHa7e3fGtlO0cKDvZoVwYfc+/+o6Uk1n1LMqeImIsry9ZLYbBgrS1HH7PIfyjJuQBhAgKfCXi9kDKfrfMKXdknqU+LhL8EEv4teM5nwN+VnaxnMfEN+oP5x710+2x3KN4CyCTyHCq1OfFDykAcuK0z9j93zJKbKR3QRk17pQJsqXOdDSJQOw3jnhyhD0fsyxH7Q0hvif4M/ZGD9qHVdHpreXMF7VpnZbHeAFk6u4mlPSRAqb2p05JpRspc0Iy8pf9bz62T1eHUg2EZis+In937WVG+Kzvx0wWeIjLuDT4sM/HSPUWyE9b665ygOmfLLFvFt6cQo+K6nq5xPRtJraimpoOsram2ZBx1FT1aJe0ziFvuHGTw8chHvIj07WUVEQ7I53yvjP4s+AwXUun0cshfVVJ/gamtSV/3Y2oUUMRumly3b62Hbyn6JQGAJTOPtouWCa1f/9m9rwEPM+HhTZihgLtQvmNlHS4i36F037h8HVtMwnMzosT2QyU2J8GjZmPJiaplX6uM5gRdgPEc+aWkmQ84CgAhhJ8F/OwpPQfJfNfsETgJIPWlgYWlVr5m3vRes4lYpDsn9BYxV4ffAxBeb+eIhIfraOY7VSC/zmxPq8dynbJkmbfkdEuejyi+LYV45AckhY+Qj2QYzHwT8pGRndpsLfpHCgC25D3XtrWkZ+2WqR+g1Jh4X9e5wvKwCH5KRC4CSi2aaW0pta7RPr2EldJLCKF8E0I+ahDQauaf1r9wWdo+Oh956r7BcNKP2SUqM24Tkrz+YRikQ3MisqqRaAowIYQQQkiHOH7HNo42fWlO2v15TonztkyoUfSzv+vO7F0yQQgh/69vTGa+CSGkNdbSnZJ71F5rvsMPcUIIIYQQQkg//hVgAB4RTuyojhjTAAAAAElFTkSuQmCC);
-		  width:735px;
-		  height:25px;
-		}
+.TKAdjustableNumberHelp {
+	position:absolute;
+	color: #00f;
+	font: 9px "Helvetica-Neue", "Arial", sans-serif;
+}
 
 		body {
 			margin: 0;
@@ -115,15 +104,6 @@
 			background: #EAC07E;
 			color: #553F18;
 			font-family: sans-serif;
-		}
-
-		.example {
-			margin: unset;
-		}
-
-		.example ul {
-			margin: 0;
-			padding: 10px 20px;
 		}
 		</style>
 	</head>
@@ -142,29 +122,10 @@
 			</div>
 		</noscript>
 
-
-
-
-		<!-- EDIT ME -->
-
-		<div id="content" style="display:none;">
-			<div id="tangle" class="example">
-				<div class="exampleTop"></div>
-				<div class="exampleCenter">
-					{{{html}}}
-				</div>
-				<div class="exampleBottom"></div>
-			</div>
-		</div>
-
-		<!-- /EDIT ME -->
-
-
-
+		{{{html}}}
+		<script type="text/javascript">{{{ script }}}</script>
 
 	</body>
-
-	<script type="text/javascript">{{{ script }}}</script>
 
 	<!-- noscript stuff -->
 	<script type="text/javascript">document.getElementById("content").style.display='block';</script>

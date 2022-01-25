@@ -1,26 +1,28 @@
-{{{initial}}}
+{
+    {{{initial}}}
 
-{{{updater}}}
+    {{{updater}}}
 
-document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
 
-    var model = {
-        initialize: function () {
-            for (const key of Object.keys(initial)) {
-                // this.setValue(key, initial[key])
-                this[key] = initial[key]
+        var model = {
+            initialize: function () {
+                for (const key of Object.keys(initial)) {
+                    // this.setValue(key, initial[key])
+                    this[key] = initial[key]
+                }
+            },
+            update: function () {
+                const next = updater(this)
+                for (const key of Object.keys(next)) {
+                    // this.setValue(key, next[key])
+                    this[key] = next[key]
+                }
             }
-        },
-        update: function () {
-            const next = updater(this)
-            for (const key of Object.keys(next)) {
-                // this.setValue(key, next[key])
-                this[key] = next[key]
-            }
-        }
-    };
+        };
 
-    const element = document.getElementById("tangle");
-    new Tangle(element,model);
-    
-});
+        const element = document.getElementById("{{id}}");
+        new Tangle(element,model);
+        
+    });
+}

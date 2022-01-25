@@ -73,6 +73,8 @@ import {parse} from "entangle-doc"
 const { html, javascript } = parse(source)
 ```
 
+The resulting html is a `div` element you can put anywhere in the HTML `body`. The resulting javascript needs to be encapsulated in a `<script>` tag, but after that you can put it anywhere.
+
 ## Similar projects
 
 - https://github.com/jqhoogland/remark-tangle
