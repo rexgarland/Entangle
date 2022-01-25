@@ -1,9 +1,10 @@
 {
-    {{{initial}}}
-
-    {{{updater}}}
 
     document.addEventListener('DOMContentLoaded', function () {
+        
+        {{{initial}}}
+
+        {{{updater}}}
 
         var model = {
             initialize: function () {
