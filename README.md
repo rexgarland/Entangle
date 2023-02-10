@@ -2,7 +2,7 @@
 
 Another attempt at writing [Tangle.js](http://worrydream.com/Tangle/) documents in markdown.
 
-The main objective here was to keep the "explanation" part as readable as possible, without loosing the power of javascript.
+The main objective here was to keep the "explanation" part as readable as possible, without losing the power of javascript.
 
 ## Install
 
@@ -21,6 +21,7 @@ If you have trouble opening the output html in Mac Safari, try Firefox.
 ## Explanation
 
 A "Entangle" document is split into three sections, separated by `---`:
+
 1. the content (markdown)
 2. the config (yaml)
 3. the code (coffeescript)
@@ -68,9 +69,9 @@ entangle example/cookies.entangle
 I also included some hooks for parsing entangle code.
 
 ```javascript
-import {parse} from "entangle-doc"
+import { parse } from "entangle-doc";
 
-const { html, javascript } = parse(source)
+const { html, javascript } = parse(source);
 ```
 
 The resulting html is a `div` element you can put anywhere in the HTML `body`. The resulting javascript needs to be encapsulated in a `<script>` tag, but after that you can put it anywhere.
@@ -79,3 +80,4 @@ The resulting html is a `div` element you can put anywhere in the HTML `body`. T
 
 - https://github.com/jqhoogland/remark-tangle
 - https://github.com/alecperkins/active-markdown
+
